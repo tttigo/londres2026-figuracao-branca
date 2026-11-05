@@ -3,21 +3,29 @@
 // página o Chrome do iPhone pulava para ela e errava a conta da barra de
 // endereço, deixando o topo do vídeo cortado.
 (function () {
+  // (location.hash vem vazio para um "#" sozinho, por isso olhamos o endereço inteiro)
+  function hasHash() { return location.href.indexOf('#') !== -1; }
   function cleanHash() {
-    if (location.hash && history.replaceState) {
+    if (hasHash() && history.replaceState) {
       history.replaceState(null, '', location.pathname + location.search);
     }
   }
 
-  // se alguém abrir/atualizar com uma âncora antiga no endereço, limpa e fica no topo
-  if (location.hash === '#topo' || location.hash === '#manifesto') {
+  // se a página abrir/atualizar com qualquer # no endereço, limpa e fica no topo
+  // (a página não tem outros pontos de entrada por âncora)
+  if (hasHash()) {
     cleanHash();
     window.scrollTo(0, 0);
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     var id = link.getAttribute('href').slice(1);
-    if (!id) return;
+    if (!id) {
+      // link provisório (href="#"), p.ex. a página de prints que ainda não existe:
+      // não faz nada em vez de abrir o próprio site com "#" numa aba nova
+      link.addEventListener('click', function (e) { e.preventDefault(); });
+      return;
+    }
     link.addEventListener('click', function (e) {
       var target = document.getElementById(id);
       if (!target) return;
