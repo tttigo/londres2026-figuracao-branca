@@ -444,11 +444,17 @@ html:has(body.no-scroll) { overflow: hidden; }
    CELULAR
    --------------------------------------------------------- */
 @media (max-width: 759px) {
+  /* no celular a primeira tela começa colada no topo (sem centralizar na altura):
+     o vídeo aparece inteiro logo de cara, sem faixa vazia acima dele que
+     obrigue a rolar um pouco — e é nesse meio-termo que a barra do Chrome
+     cobre o topo do vídeo. O começo do texto seguinte já aparece embaixo. */
   .hero {
-    min-height: calc(100svh - 4rem);
-    padding-top: 16px;
+    min-height: 0;
+    justify-content: flex-start;
+    padding-top: 20px;
     padding-bottom: 4rem;
   }
+  .scroll-cue { bottom: .9rem; }
 
   .film { width: 100%; min-width: 0; }
   .film__caption { text-align: left; }
