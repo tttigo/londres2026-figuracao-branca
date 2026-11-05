@@ -1,3 +1,34 @@
+// Links internos ("voltar ao topo" e a seta ↓) rolam a página SEM colocar
+// #topo / #manifesto no endereço. Com a âncora no endereço, ao atualizar a
+// página o Chrome do iPhone pulava para ela e errava a conta da barra de
+// endereço, deixando o topo do vídeo cortado.
+(function () {
+  function cleanHash() {
+    if (location.hash && history.replaceState) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  }
+
+  // se alguém abrir/atualizar com uma âncora antiga no endereço, limpa e fica no topo
+  if (location.hash === '#topo' || location.hash === '#manifesto') {
+    cleanHash();
+    window.scrollTo(0, 0);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    var id = link.getAttribute('href').slice(1);
+    if (!id) return;
+    link.addEventListener('click', function (e) {
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      if (id === 'topo') window.scrollTo({ top: 0, behavior: 'smooth' });
+      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      cleanHash();
+    });
+  });
+})();
+
 // Entrada suave das imagens ao rolar a página.
 // Sem JS, tudo aparece normalmente (a classe .js só é adicionada aqui).
 (function () {
