@@ -54,25 +54,33 @@
 
       <div class="collage">
         <figure class="ph ph--a reveal">
-          <img src="img/7557-900.jpg" srcset="img/7557-900.jpg 675w, img/7557-1800.jpg 1351w"
-               sizes="(min-width: 760px) 20vw, 46vw" width="675" height="900" loading="lazy" decoding="async"
-               alt="Homem branco de cueca, em pé diante de um fundo de papel kraft.">
+          <a class="zoom" href="img/7557-1800.jpg" aria-label="Ver foto em tela cheia">
+            <img src="img/7557-900.jpg" srcset="img/7557-900.jpg 675w, img/7557-1800.jpg 1351w"
+                 sizes="(min-width: 760px) 20vw, 46vw" width="675" height="900" loading="lazy" decoding="async"
+                 alt="Homem branco de cueca, em pé diante de um fundo de papel kraft.">
+          </a>
         </figure>
         <figure class="ph ph--b reveal">
-          <img src="img/7690-900.jpg" srcset="img/7690-900.jpg 900w, img/7690-1800.jpg 1800w"
-               sizes="(min-width: 760px) 20vw, 46vw" width="900" height="675" loading="lazy" decoding="async"
-               alt="Sala de desenho: modelos brancos posam enquanto um pintor preto desenha entre cavaletes.">
+          <a class="zoom" href="img/7690-1800.jpg" aria-label="Ver foto em tela cheia">
+            <img src="img/7690-900.jpg" srcset="img/7690-900.jpg 900w, img/7690-1800.jpg 1800w"
+                 sizes="(min-width: 760px) 20vw, 46vw" width="900" height="675" loading="lazy" decoding="async"
+                 alt="Sala de desenho: modelos brancos posam enquanto um pintor preto desenha entre cavaletes.">
+          </a>
         </figure>
         <figure class="ph ph--c reveal">
-          <img src="img/7679-900.jpg" srcset="img/7679-900.jpg 900w, img/7679-1800.jpg 1800w"
-               sizes="(min-width: 760px) 23vw, 70vw" width="900" height="675" loading="lazy" decoding="async"
-               alt="Modelo branco sentado num banquinho, no canto de uma sala de madeira.">
+          <a class="zoom" href="img/7679-1800.jpg" aria-label="Ver foto em tela cheia">
+            <img src="img/7679-900.jpg" srcset="img/7679-900.jpg 900w, img/7679-1800.jpg 1800w"
+                 sizes="(min-width: 760px) 23vw, 70vw" width="900" height="675" loading="lazy" decoding="async"
+                 alt="Modelo branco sentado num banquinho, no canto de uma sala de madeira.">
+          </a>
         </figure>
         <p class="collage__note">a figuração branca é uma invenção brasileira.</p>
         <figure class="ph ph--d reveal">
-          <img src="img/7760-900.jpg" srcset="img/7760-900.jpg 900w, img/7760-1800.jpg 1800w"
-               sizes="(min-width: 760px) 50vw, 100vw" width="900" height="675" loading="lazy" decoding="async"
-               alt="Maxwell Alexandre pinta diante de um grupo de modelos brancos de cueca, num anfiteatro de madeira.">
+          <a class="zoom" href="img/7760-1800.jpg" aria-label="Ver foto em tela cheia">
+            <img src="img/7760-900.jpg" srcset="img/7760-900.jpg 900w, img/7760-1800.jpg 1800w"
+                 sizes="(min-width: 760px) 50vw, 100vw" width="900" height="675" loading="lazy" decoding="async"
+                 alt="Maxwell Alexandre pinta diante de um grupo de modelos brancos de cueca, num anfiteatro de madeira.">
+          </a>
         </figure>
       </div>
     </section>
@@ -92,6 +100,7 @@
             <img src="img/7648-900.jpg" srcset="img/7648-900.jpg 900w, img/7648-1800.jpg 1800w"
                  sizes="(min-width: 760px) 26vw, 80vw" width="900" height="675" loading="lazy" decoding="async"
                  alt="Modelo branco sentado, de costas, observado por pintores pretos que desenham na galeria do anfiteatro.">
+            <span class="frame__text">“pintor preto, figuração branca” gera um contraste explícito que faz nascer, na pintura, a raça da figura branca. somente um autor racializado tem o poder de conferir raça. pintor preto, figuração branca é uma afirmação que nos ajuda a revelar uma posição. não é mais o pintor branco tradicional pintando o corpo branco, seus pares, amigos, familiares, grupo social, etc. agora é o pintor…</span>
           </span>
         </span>
         <span class="prints__label">acesse os prints disponíveis</span>
@@ -103,6 +112,15 @@
     <a href="mailto:contato@pavilhao.faith">contato@pavilhao.faith</a>
     <a href="#topo">voltar ao topo</a>
   </footer>
+
+  <!-- visualização das fotos em tela cheia -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto em tela cheia" hidden>
+    <img class="lightbox__img" alt="">
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Fechar">fechar ×</button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Foto anterior">←</button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Próxima foto">→</button>
+    <p class="lightbox__count" aria-live="polite"></p>
+  </div>
 
   <script src="js/main.js" defer></script>
 </body>
