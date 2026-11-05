@@ -46,8 +46,14 @@ body {
   letter-spacing: .01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
+
+/* Proteção contra rolagem lateral SEM usar overflow no body:
+   no iOS, overflow no body vira um contêiner de rolagem e confunde o
+   Chrome ao esconder/mostrar a barra de endereço (cortava o topo do vídeo).
+   "clip" corta o excesso sem criar contêiner de rolagem. */
+main,
+.footer { overflow-x: clip; }
 
 img { display: block; width: 100%; height: auto; }
 figure { margin: 0; }
@@ -393,7 +399,7 @@ a:focus-visible {
   color: var(--ink-soft);
 }
 
-body.no-scroll { overflow: hidden; }
+html:has(body.no-scroll) { overflow: hidden; }
 
 @media (max-width: 759px) {
   .lightbox { padding: 3.5rem 0; }
