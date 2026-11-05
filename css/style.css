@@ -305,6 +305,16 @@ a:focus-visible {
   letter-spacing: .04em;
 }
 
+.credit {
+  flex-basis: 100%;
+  margin-top: 3.5rem;
+  text-align: center;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .08em;
+  opacity: .45;
+}
+
 /* ---------------------------------------------------------
    FOTOS EM TELA CHEIA
    --------------------------------------------------------- */
