@@ -61,8 +61,14 @@
 // Sem JS, o link abre a foto grande normalmente.
 (function () {
   var box = document.getElementById('lightbox');
-  var links = Array.prototype.slice.call(document.querySelectorAll('a.zoom'));
-  if (!box || !links.length) return;
+  var all = Array.prototype.slice.call(document.querySelectorAll('a.zoom'));
+  if (!box || !all.length) return;
+  // só as fotos visíveis na versão atual (desktop ou celular) entram na sequência;
+  // há uma foto duplicada no HTML, uma para cada versão
+  var links = all;
+  function visibleLinks() {
+    return all.filter(function (l) { return l.offsetParent !== null; });
+  }
 
   var img = box.querySelector('.lightbox__img');
   var count = box.querySelector('.lightbox__count');
@@ -98,10 +104,11 @@
     if (opener) opener.focus({ preventScroll: true });
   }
 
-  links.forEach(function (link, i) {
+  all.forEach(function (link) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      open(i);
+      links = visibleLinks();
+      open(Math.max(0, links.indexOf(link)));
     });
   });
 
