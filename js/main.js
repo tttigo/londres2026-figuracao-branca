@@ -1,3 +1,43 @@
+// Idioma PT / ENG: troca na hora, sem recarregar a página.
+// O idioma inicial já foi escolhido no <head> (endereço → última escolha → navegador).
+(function () {
+  var root = document.documentElement;
+  var TITLE = {
+    pt: 'londres 2026 — pintor preto, figuração branca — maxwell alexandre',
+    en: 'londres 2026 — Black painter, white figuration — maxwell alexandre'
+  };
+  var ATTRS = ['alt', 'aria-label', 'title'];
+
+  function apply(lang) {
+    root.lang = lang === 'en' ? 'en' : 'pt-BR';
+    document.title = TITLE[lang];
+    // atributos (texto alternativo das fotos, rótulos de acessibilidade, etc.)
+    ATTRS.forEach(function (attr) {
+      document.querySelectorAll('[data-en-' + attr + ']').forEach(function (el) {
+        if (!el.hasAttribute('data-pt-' + attr)) {
+          el.setAttribute('data-pt-' + attr, el.getAttribute(attr) || '');
+        }
+        el.setAttribute(attr, el.getAttribute('data-' + lang + '-' + attr));
+      });
+    });
+  }
+
+  apply(root.lang === 'en' ? 'en' : 'pt');
+
+  document.querySelectorAll('[data-set-lang]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var lang = link.getAttribute('data-set-lang');
+      apply(lang);
+      try { localStorage.setItem('lang', lang); } catch (err) {}
+      // deixa o idioma no endereço, para quem compartilhar o link
+      if (history.replaceState) {
+        history.replaceState(null, '', location.pathname + '?lang=' + lang);
+      }
+    });
+  });
+})();
+
 // Links internos ("voltar ao topo" e a seta ↓) rolam a página SEM colocar
 // #topo / #manifesto no endereço. Com a âncora no endereço, ao atualizar a
 // página o Chrome do iPhone pulava para ela e errava a conta da barra de

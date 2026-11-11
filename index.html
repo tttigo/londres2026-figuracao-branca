@@ -10,6 +10,18 @@
   <meta property="og:description" content="se existe uma figuração preta, há de haver uma figuração branca.">
   <meta property="og:image" content="img/7760-1800.jpg">
   <meta name="theme-color" content="#f4f3f0">
+  <script>
+    // Escolhe o idioma ANTES de desenhar a página (sem "piscar" o outro idioma):
+    // 1) ?lang=en / ?lang=pt no endereço  2) a última escolha da pessoa
+    // 3) o idioma do navegador (português → PT; qualquer outro → ENG)
+    (function () {
+      var l = null;
+      try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+      if (!l) { try { l = localStorage.getItem('lang'); } catch (e) {} }
+      if (!l) l = /^pt/i.test(navigator.language || '') ? 'pt' : 'en';
+      document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
+    })();
+  </script>
   <link rel="preload" href="fonts/pollen.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="stylesheet" href="css/style.css">
@@ -19,30 +31,42 @@
 
   <!-- ============ PRIMEIRA DOBRA: filme + links ============ -->
   <header class="hero">
+    <!-- seletor de idioma: canto superior direito (desktop) / faixa fina acima do vídeo (celular) -->
+    <nav class="lang" aria-label="Idioma / Language">
+      <a href="?lang=pt" data-set-lang="pt" hreflang="pt-BR">PT</a><span class="lang__sep" aria-hidden="true">/</span><a href="?lang=en" data-set-lang="en" hreflang="en">ENG</a>
+    </nav>
+
     <figure class="film">
       <div class="film__frame">
         <iframe
           src="https://www.youtube-nocookie.com/embed/0y_hXrEpmTs?rel=0&amp;modestbranding=1&amp;playsinline=1"
           title="londres 2026 - pintor preto, figuração branca - maxwell alexandre"
+          data-en-title="londres 2026 - Black painter, white figuration - maxwell alexandre"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen></iframe>
       </div>
       <figcaption class="film__caption">
-        <h1>londres 2026 - pintor preto, figuração branca - maxwell alexandre</h1>
+        <h1>
+          <span data-lang="pt">londres 2026 - pintor preto, figuração branca - maxwell alexandre</span>
+          <span data-lang="en" lang="en">londres 2026 - Black painter, white figuration - maxwell alexandre</span>
+        </h1>
       </figcaption>
     </figure>
 
     <div class="hero__row">
       <!-- TODO: trocar pelos PDFs finais (colocar os arquivos na pasta /pdf com estes nomes) -->
-      <nav class="docs" aria-label="Documentos">
-        <a href="pdf/epistola-pt.pdf" target="_blank" rel="noopener">epístola - versão em português PDF</a>
-        <a href="pdf/booklet-en.pdf" target="_blank" rel="noopener">booklet - english version PDF</a>
+      <nav class="docs" aria-label="Documentos" data-en-aria-label="Documents">
+        <a class="docs__pt" href="pdf/epistola-pt.pdf" target="_blank" rel="noopener" hreflang="pt-BR">epístola - versão em português PDF</a>
+        <a class="docs__en" href="pdf/booklet-en.pdf" target="_blank" rel="noopener" hreflang="en" lang="en">booklet - english version PDF</a>
       </nav>
-      <p class="quote"><span class="hide-m">“</span>se existe uma figuração preta,<br class="br-m"> há de haver uma figuração branca<span class="hide-m">”</span></p>
+      <p class="quote">
+        <span data-lang="pt"><span class="hide-m">“</span>se existe uma figuração preta,<br class="br-m"> há de haver uma figuração branca<span class="hide-m">”</span></span>
+        <span data-lang="en" lang="en">“if Black figuration exists,<br class="br-m"> there must also be white figuration.”</span>
+      </p>
     </div>
 
-    <a class="scroll-cue" href="#manifesto" aria-label="Rolar para baixo">
+    <a class="scroll-cue" href="#manifesto" aria-label="Rolar para baixo" data-en-aria-label="Scroll down">
       <span aria-hidden="true">↓</span>
     </a>
   </header>
@@ -50,36 +74,46 @@
   <main>
     <!-- ============ MANIFESTO + COLAGEM ============ -->
     <section class="manifesto" id="manifesto">
-      <h2 class="lead">a figuração branca é um novo gênero da pintura inventado em 2020 com a série Clube, na favela da Rocinha, no Rio de Janeiro, Brasil.</h2>
+      <h2 class="lead">
+        <span data-lang="pt">a figuração branca é um novo gênero da pintura inventado em 2020 com a série Clube, na favela da Rocinha, no Rio de Janeiro, Brasil.</span>
+        <span data-lang="en" lang="en">white figuration is a new genre of painting invented in 2020 with the Clube series, in the Rocinha favela, in Rio de Janeiro, Brazil.</span>
+      </h2>
 
       <div class="collage">
         <figure class="ph ph--a reveal">
-          <a class="zoom" href="img/7557-1800.jpg" aria-label="Ver foto em tela cheia">
+          <a class="zoom" href="img/7557-1800.jpg" aria-label="Ver foto em tela cheia" data-en-aria-label="View photo full screen">
             <img src="img/7557-900.jpg" srcset="img/7557-900.jpg 675w, img/7557-1800.jpg 1351w"
                  sizes="(min-width: 760px) 20vw, 46vw" width="675" height="900" loading="lazy" decoding="async"
-                 alt="Homem branco de cueca, em pé diante de um fundo de papel kraft.">
+                 alt="Homem branco de cueca, em pé diante de um fundo de papel kraft."
+                 data-en-alt="White man in underwear standing in front of a kraft paper backdrop.">
           </a>
         </figure>
         <figure class="ph ph--b reveal">
-          <a class="zoom" href="img/7690-1800.jpg" aria-label="Ver foto em tela cheia">
+          <a class="zoom" href="img/7690-1800.jpg" aria-label="Ver foto em tela cheia" data-en-aria-label="View photo full screen">
             <img src="img/7690-900.jpg" srcset="img/7690-900.jpg 900w, img/7690-1800.jpg 1800w"
                  sizes="(min-width: 760px) 20vw, 46vw" width="900" height="675" loading="lazy" decoding="async"
-                 alt="Sala de desenho: modelos brancos posam enquanto um pintor preto desenha entre cavaletes.">
+                 alt="Sala de desenho: modelos brancos posam enquanto um pintor preto desenha entre cavaletes."
+                 data-en-alt="Drawing room: white models pose while a Black painter draws among the easels.">
           </a>
         </figure>
         <figure class="ph ph--c reveal">
-          <a class="zoom" href="img/7679-1800.jpg" aria-label="Ver foto em tela cheia">
+          <a class="zoom" href="img/7679-1800.jpg" aria-label="Ver foto em tela cheia" data-en-aria-label="View photo full screen">
             <img src="img/7679-900.jpg" srcset="img/7679-900.jpg 900w, img/7679-1800.jpg 1800w"
                  sizes="(min-width: 760px) 23vw, 70vw" width="900" height="675" loading="lazy" decoding="async"
-                 alt="Modelo branco sentado num banquinho, no canto de uma sala de madeira.">
+                 alt="Modelo branco sentado num banquinho, no canto de uma sala de madeira."
+                 data-en-alt="White model sitting on a stool in the corner of a wood-panelled room.">
           </a>
         </figure>
-        <p class="collage__note">a figuração branca<br class="br-m"> é uma invenção brasileira.</p>
+        <p class="collage__note">
+          <span data-lang="pt">a figuração branca<br class="br-m"> é uma invenção brasileira.</span>
+          <span data-lang="en" lang="en">white figuration<br class="br-m"> is a Brazilian invention.</span>
+        </p>
         <figure class="ph ph--d reveal">
-          <a class="zoom" href="img/7760-1800.jpg" aria-label="Ver foto em tela cheia">
+          <a class="zoom" href="img/7760-1800.jpg" aria-label="Ver foto em tela cheia" data-en-aria-label="View photo full screen">
             <img src="img/7760-900.jpg" srcset="img/7760-900.jpg 900w, img/7760-1800.jpg 1800w"
                  sizes="(min-width: 760px) 50vw, 100vw" width="900" height="675" loading="lazy" decoding="async"
-                 alt="Maxwell Alexandre pinta diante de um grupo de modelos brancos de cueca, num anfiteatro de madeira.">
+                 alt="Maxwell Alexandre pinta diante de um grupo de modelos brancos de cueca, num anfiteatro de madeira."
+                 data-en-alt="Maxwell Alexandre paints in front of a group of white models in underwear, in a wooden amphitheatre.">
           </a>
         </figure>
       </div>
@@ -89,16 +123,22 @@
     <section class="closing">
       <!-- no celular esta foto sai da colagem e fica ao lado do texto (layout mobile da designer) -->
       <figure class="ph ph--c-m only-m reveal">
-        <a class="zoom" href="img/7679-1800.jpg" aria-label="Ver foto em tela cheia">
+        <a class="zoom" href="img/7679-1800.jpg" aria-label="Ver foto em tela cheia" data-en-aria-label="View photo full screen">
           <img src="img/7679-900.jpg" srcset="img/7679-900.jpg 900w, img/7679-1800.jpg 1800w"
                sizes="40vw" width="900" height="675" loading="lazy" decoding="async"
-               alt="Modelo branco sentado num banquinho, no canto de uma sala de madeira.">
+               alt="Modelo branco sentado num banquinho, no canto de uma sala de madeira."
+               data-en-alt="White model sitting on a stool in the corner of a wood-panelled room.">
         </a>
       </figure>
-      <div class="closing__text">
+      <div class="closing__text" data-lang="pt">
         <p>a figuração branca é<br class="br-m"> um novo gênero da pintura<br class="br-m"> inventado em 2020 com<br class="br-m"> a série Clube,<br class="br-m"> na favela da Rocinha,<br class="br-m"> no Rio de Janeiro, Brasil.</p>
         <p>toda inventividade que a série Clube propõe, não está baseada somente em um ponto, é uma soma de intenção, com análise histórica e consciência do próprio tempo e suas implicações.</p>
         <p class="strong">o que nomeei “figuração<br class="br-m"> branca” é o que hoje<br class="br-m"> vocês chamam apenas<br class="br-m"> de figuração.</p>
+      </div>
+      <div class="closing__text" data-lang="en" lang="en">
+        <p>white figuration is a<br class="br-m"> new genre of painting<br class="br-m"> invented in 2020 with the<br class="br-m"> Clube series, in the Rocinha<br class="br-m"> favela, in Rio de Janeiro, Brazil.</p>
+        <p>the inventiveness of<br class="br-m"> the Clube series does not<br class="br-m"> rest on a single point, but<br class="br-m"> on a combination of intention,<br class="br-m"> historical analysis, and an<br class="br-m"> awareness of its own time and<br class="br-m"> its implications.</p>
+        <p class="strong">what I have named “white<br class="br-m"> figuration” is what you now<br class="br-m"> call simply figuration.</p>
       </div>
 
       <!-- TODO: trocar pelo link da página de prints -->
@@ -107,27 +147,35 @@
           <span class="frame__mat">
             <img src="img/7648-900.jpg" srcset="img/7648-900.jpg 900w, img/7648-1800.jpg 1800w"
                  sizes="(min-width: 760px) 26vw, 80vw" width="900" height="675" loading="lazy" decoding="async"
-                 alt="Modelo branco sentado, de costas, observado por pintores pretos que desenham na galeria do anfiteatro.">
-            <span class="frame__text">“pintor preto, figuração branca” gera um contraste explícito que faz nascer, na pintura, a raça da figura branca. somente um autor racializado tem o poder de conferir raça. pintor preto, figuração branca é uma afirmação que nos ajuda a revelar uma posição. não é mais o pintor branco tradicional pintando o corpo branco, seus pares, amigos, familiares, grupo social, etc. agora é o pintor…</span>
+                 alt="Modelo branco sentado, de costas, observado por pintores pretos que desenham na galeria do anfiteatro."
+                 data-en-alt="White model seated with his back turned, watched by Black painters drawing in the amphitheatre gallery.">
+            <!-- texto do próprio print (fica em português nas duas versões, como no layout) -->
+            <span class="frame__text" lang="pt-BR">“pintor preto, figuração branca” gera um contraste explícito que faz nascer, na pintura, a raça da figura branca. somente um autor racializado tem o poder de conferir raça. pintor preto, figuração branca é uma afirmação que nos ajuda a revelar uma posição. não é mais o pintor branco tradicional pintando o corpo branco, seus pares, amigos, familiares, grupo social, etc. agora é o pintor…</span>
           </span>
         </span>
-        <span class="prints__label">acesse os prints disponíveis</span>
+        <span class="prints__label">
+          <span data-lang="pt">acesse os prints disponíveis</span>
+          <span data-lang="en" lang="en">prints available here</span>
+        </span>
       </a>
     </section>
   </main>
 
   <footer class="footer">
     <a href="mailto:contato@pavilhao.faith">contato@pavilhao.faith</a>
-    <a href="#topo">voltar ao topo</a>
-    <p class="credit">design bruna vernes · desenvolvimento tttigo</p>
+    <a href="#topo"><span data-lang="pt">voltar ao topo</span><span data-lang="en" lang="en">back to top</span></a>
+    <p class="credit">
+      <span data-lang="pt">design bruna vernes · desenvolvimento tttigo</span>
+      <span data-lang="en" lang="en">design bruna vernes · development tttigo</span>
+    </p>
   </footer>
 
   <!-- visualização das fotos em tela cheia -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto em tela cheia" hidden>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto em tela cheia" data-en-aria-label="Full-screen photo" hidden>
     <img class="lightbox__img" alt="">
-    <button class="lightbox__btn lightbox__close" type="button" aria-label="Fechar">fechar ×</button>
-    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Foto anterior">←</button>
-    <button class="lightbox__btn lightbox__next" type="button" aria-label="Próxima foto">→</button>
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Fechar" data-en-aria-label="Close"><span data-lang="pt">fechar ×</span><span data-lang="en" lang="en">close ×</span></button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Foto anterior" data-en-aria-label="Previous photo">←</button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Próxima foto" data-en-aria-label="Next photo">→</button>
     <p class="lightbox__count" aria-live="polite"></p>
   </div>
 

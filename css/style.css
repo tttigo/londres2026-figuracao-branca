@@ -71,6 +71,42 @@ a:focus-visible {
 }
 
 /* ---------------------------------------------------------
+   IDIOMAS — PT / ENG
+   Cada texto existe nas duas línguas; só a do <html lang> aparece.
+   --------------------------------------------------------- */
+html:not([lang="en"]) [data-lang="en"],
+html[lang="en"] [data-lang="pt"] { display: none !important; }
+
+/* no inglês, o booklet (english) vem primeiro na lista de PDFs */
+html[lang="en"] .docs__en { order: -1; }
+
+.lang {
+  position: absolute;
+  top: clamp(20px, 4vh, 48px);
+  right: var(--gutter);
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: .4em;
+  font-size: var(--fs-small);
+  letter-spacing: .08em;
+}
+.lang a {
+  color: var(--ink);
+  opacity: .38;
+  padding: .35em .1em;           /* área de toque maior sem mudar o visual */
+  border-bottom: 1px solid transparent;
+}
+.lang a:hover { opacity: .75; }
+html:not([lang="en"]) .lang a[data-set-lang="pt"],
+html[lang="en"] .lang a[data-set-lang="en"] {
+  opacity: 1;
+  border-bottom-color: currentColor;
+  pointer-events: none;
+}
+.lang__sep { opacity: .38; }
+
+/* ---------------------------------------------------------
    PRIMEIRA DOBRA
    --------------------------------------------------------- */
 .hero {
@@ -469,6 +505,14 @@ html:has(body.no-scroll) { overflow: hidden; }
   }
   .scroll-cue { display: none; }
 
+  /* seletor de idioma: faixa fina, alinhada à direita, acima do vídeo */
+  .lang {
+    position: static;
+    justify-content: flex-end;
+    padding: .55rem var(--m-edge) .45rem;
+    font-size: 11.5px;
+  }
+
   .film { width: 100%; min-width: 0; }
   .film__caption {
     margin-top: .8rem;
@@ -551,6 +595,9 @@ html:has(body.no-scroll) { overflow: hidden; }
     letter-spacing: .035em;
   }
   .closing__text p + p { margin-top: 1.12em; }
+  /* no inglês as linhas da designer são um pouco mais longas */
+  html[lang="en"] .closing__text { letter-spacing: .012em; }
+  html[lang="en"] .closing__text .strong { letter-spacing: .01em; }
   .closing__text .strong { letter-spacing: .03em; }
   .ph--c-m { grid-column: 2; grid-row: 1; }
 
