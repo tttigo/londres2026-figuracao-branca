@@ -139,7 +139,7 @@ html[lang="en"] .lang a[data-set-lang="en"] { opacity: 1; border-bottom-color: c
 .btn:hover { background: var(--ink); color: var(--bg); }
 
 /* filme: capa + play; ao clicar vira o player */
-.film { background: #0d0c0b; overflow: hidden; }
+.film { background: #0d0c0b; overflow: hidden; height: auto; aspect-ratio: 16 / 9; }   /* proporção exata do vídeo: sem tarjas pretas */
 .film__play {
   position: relative;
   display: block;
@@ -289,7 +289,6 @@ html:has(body.no-scroll) { overflow: hidden; }
   .bleed { margin-top: 1.2rem; margin-bottom: 1.2rem; }
 
   .ph img { height: auto; object-fit: initial; }
-  .film { aspect-ratio: 4 / 3; }
 
   .tx {
     font-size: 15px;
