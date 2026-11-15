@@ -29,7 +29,6 @@ mas o vídeo do YouTube pode não carregar fora de um servidor.
 
 - [ ] Vídeo novo: subir no YouTube ou Vimeo e trocar `data-provider` / `data-video` no bloco `.film` do `index.html`
       (hoje toca o vídeo antigo do YouTube, com a capa nova)
-- [ ] PDFs: colocar em `pdf/` com estes nomes: `epistola-pt.pdf` e `epistle-en.pdf`
 - [ ] Link da página de prints (botões COLECIONAR): trocar `href="#"` dos blocos `.print` no `index.html`
 - [ ] Revisar as traduções em inglês dos textos novos (regras 1–4, “a dinâmica…”, “o nó górdio…”)
 
