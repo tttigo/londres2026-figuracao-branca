@@ -80,7 +80,8 @@ html[lang="en"] .lang a[data-set-lang="en"] { opacity: 1; border-bottom-color: c
 
 /* fotos e obras */
 .ph a, .ph img { display: block; width: 100%; height: 100%; }
-.ph img { object-fit: cover; object-position: 50% 0; }   /* se precisar cortar, corta embaixo, nunca as cabeças */
+.ph img { object-fit: cover; object-position: 50% 0; }
+.ph.art img { object-fit: contain; object-position: 50% 50%; }   /* obras: moldura sempre inteira */   /* se precisar cortar, corta embaixo, nunca as cabeças */
 .zoom { cursor: zoom-in; transition: opacity .3s var(--ease); }
 .zoom:hover { opacity: .9; }
 

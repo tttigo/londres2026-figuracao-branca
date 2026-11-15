@@ -31,9 +31,6 @@ mas o vídeo do YouTube pode não carregar fora de um servidor.
       (hoje toca o vídeo antigo do YouTube, com a capa nova)
 - [ ] PDFs: colocar em `pdf/` com estes nomes: `epistola-pt.pdf` e `epistle-en.pdf`
 - [ ] Link da página de prints (botões COLECIONAR): trocar `href="#"` dos blocos `.print` no `index.html`
-- [ ] Fotos que faltam na pasta SITE (no lugar delas há fotos da pasta seleção):
-      homem em pé no kraft com as mãos na cintura (`kraft-sub`),
-      pintor no cavalete em sala escura (`cavalete-sub`)
 - [ ] Revisar as traduções em inglês dos textos novos (regras 1–4, “a dinâmica…”, “o nó górdio…”)
 
 ## Como a página é montada
