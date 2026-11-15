@@ -10,6 +10,8 @@
   --serif: "utopia-std", "Utopia Std", "Utopia", Georgia, "Times New Roman", serif;
   --gutter: clamp(16px, 2.4vw, 36px);
   --ease: cubic-bezier(.2, .7, .2, 1);
+  --max: 1600px;   /* largura máxima do conteúdo (telas ultra-wide) */
+  --side: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -46,7 +48,7 @@ html[lang="en"] .docs__en { order: -1; }
 .lang {
   position: absolute;
   top: clamp(14px, 1.9vw, 30px);
-  right: var(--gutter);
+  right: var(--side);
   z-index: 5;
   display: flex;
   align-items: baseline;
@@ -66,6 +68,8 @@ html[lang="en"] .lang a[data-set-lang="en"] { opacity: 1; border-bottom-color: c
 .board {
   position: relative;
   width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
   aspect-ratio: 1400 / 12466;
   container-type: inline-size;
 }
@@ -180,8 +184,8 @@ html[lang="en"] .lang a[data-set-lang="en"] { opacity: 1; border-bottom-color: c
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  padding: clamp(14px, 1.6vw, 26px) var(--gutter) clamp(28px, 4vw, 56px);
-  font-size: clamp(14px, 1.43vw, 21px);
+  padding: clamp(14px, 1.6vw, 26px) var(--side) clamp(28px, 4vw, 56px);
+  font-size: clamp(14px, 1.43vw, 23px);
   letter-spacing: .02em;
 }
 .footer a { border-bottom: 1px solid transparent; transition: border-color .25s var(--ease); }
