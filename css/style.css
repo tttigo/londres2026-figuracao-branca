@@ -97,7 +97,7 @@ html[lang="en"] .lang a[data-set-lang="en"] { opacity: 1; border-bottom-color: c
 .tx.right { text-align: right; }
 .tx.center { text-align: center; letter-spacing: .015em; line-height: 1.45; }
 .tx.over { z-index: 2; }               /* no layout o texto encosta por cima da foto da epístola */
-.tx .cap { font-style: italic; letter-spacing: .01em; }
+.tx .cap { font-style: italic; font-weight: 700; letter-spacing: .01em; }
 .tx.quote { font-size: 1.55cqw; }
 
 .docs {
