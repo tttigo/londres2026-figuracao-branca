@@ -27,8 +27,6 @@ mas o vídeo do YouTube pode não carregar fora de um servidor.
 
 ## Pendências
 
-- [ ] Vídeo novo: subir no YouTube ou Vimeo e trocar `data-provider` / `data-video` no bloco `.film` do `index.html`
-      (hoje toca o vídeo antigo do YouTube, com a capa nova)
 - [ ] Revisar as traduções em inglês dos textos novos (regras 1–4, “a dinâmica…”, “o nó górdio…”)
 
 ## Como a página é montada
