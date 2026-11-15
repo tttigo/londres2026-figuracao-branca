@@ -77,6 +77,33 @@
   });
 })();
 
+// Filme: mostra a capa com o botão ▶ e só carrega o player ao clicar
+// (página mais leve). Para trocar o vídeo, mude data-provider ("youtube" ou
+// "vimeo") e data-video (o código do vídeo) no index.html.
+(function () {
+  document.querySelectorAll('.film').forEach(function (film) {
+    var btn = film.querySelector('.film__play');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var id = film.getAttribute('data-video');
+      var provider = film.getAttribute('data-provider');
+      var src = provider === 'vimeo'
+        ? 'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0&dnt=1'
+        : 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      var iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = document.documentElement.lang === 'en'
+        ? 'londres 2026 - Black painter, white figuration - maxwell alexandre'
+        : 'londres 2026 - pintor preto, figuração branca - maxwell alexandre';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      film.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+})();
+
 // Entrada suave das imagens ao rolar a página.
 // Sem JS, tudo aparece normalmente (a classe .js só é adicionada aqui).
 (function () {
