@@ -1,71 +1,49 @@
 # londres 2026 — pintor preto, figuração branca
 
-Landing page estática (página única) do filme de Maxwell Alexandre.
-HTML + CSS + um pouco de JS, sem build. Publicada pelo GitHub Pages.
+Site do projeto de Maxwell Alexandre: **https://londres2026.com**
+Página única estática (HTML + CSS + um pouco de JS, sem build), bilíngue PT / ENG, publicada pelo GitHub Pages.
 
 ```
-index.html      página
-css/style.css   estilos (layout responsivo, cores, fonte)
-js/main.js      animação de entrada das fotos
-img/v2/         fotos e obras otimizadas (versões -s e -l)
-pdf/            epístola e booklet (ver pendências)
+index.html      página (textos em PT e EN, posições do layout)
+css/style.css   estilos (layout desktop proporcional + fluxo no celular)
+js/main.js      idioma, filme, tela cheia das fotos, animações
+img/v2/         fotos e obras (versões -s 900px e -l 1800/2400px)
+pdf/            epístola (PT) e epistle (EN)
+robots.txt      regras para buscadores
+sitemap.xml     mapa do site para o Google
+CNAME           domínio londres2026.com (não apagar)
 ```
+
+## Atualizar o site
+
+Edite os arquivos, faça commit e push na `main`. O GitHub Pages publica em 1–2 minutos.
+
+Para ver localmente:
+
+```bash
+python3 -m http.server 8765
+```
+
+e abra http://localhost:8765.
+
+## Como a página é montada
+
+- **Desktop:** cada bloco fica na posição proporcional do layout da designer (variáveis `--x`, `--y`, `--w`, `--h`
+  no `style` de cada bloco, em % de um quadro de 1400px). O conteúdo tem no máximo 1600px de largura.
+- **Celular (< 900px):** os blocos viram um fluxo em duas colunas, na ordem do HTML
+  (`m-full` ocupa a largura toda, `m-half` meia largura).
+- **Idiomas:** cada texto existe nas duas línguas (`data-lang="pt"` / `data-lang="en"`); só a do `<html lang>` aparece.
+  O idioma vem de `?lang=pt|en`, da última escolha da pessoa ou do idioma do navegador.
+- **Filme:** bloco `.film` no `index.html` (`data-provider="youtube"` e `data-video` com o código do vídeo).
+  O player só carrega ao clicar na capa.
+- **Obras** (`.ph.art`) aparecem sempre com a moldura inteira; fotos cortam embaixo se precisar.
 
 ## Fonte
 
 Utopia Std (regular, itálico, negrito) vem do Adobe Fonts, pelo projeto web `gcv5yce`
 (link no `<head>` do `index.html`). Se o projeto for apagado na conta Adobe, o site cai para Georgia.
 
-## Ver localmente
+## Domínio
 
-```bash
-python3 -m http.server 8765
-```
-
-Depois abra http://localhost:8765. Abrir o `index.html` direto do Finder também funciona,
-mas o vídeo do YouTube pode não carregar fora de um servidor.
-
-## Pendências
-
-- [ ] Revisar as traduções em inglês dos textos novos (regras 1–4, “a dinâmica…”, “o nó górdio…”)
-
-## Como a página é montada
-
-No desktop, cada bloco fica na mesma posição proporcional do layout da designer
-(variáveis `--x`, `--y`, `--w`, `--h` no `style` de cada bloco, em % do quadro de 1400px).
-Abaixo de 900px os blocos viram um fluxo em duas colunas, na ordem do HTML
-(`m-full` ocupa a largura toda, `m-half` meia largura).
-As fotos ficam em `img/v2/` em dois tamanhos: `-s` (900px) e `-l` (1800px; 2400px na capa e nas vistas da exposição).
-
-## Publicar no GitHub Pages
-
-1. Envie este repositório para o GitHub. Ele precisa ser **público** para usar o Pages no plano gratuito.
-2. No repositório, abra **Settings → Pages**.
-3. Em *Source*, escolha **Deploy from a branch**, depois a branch `main` e a pasta `/ (root)`. Salve.
-4. Em 1–2 minutos o site fica no ar em `https://USUARIO.github.io/NOME-DO-REPO/`.
-
-Para atualizar o site, basta fazer commit e push na `main`.
-
-## Domínio personalizado
-
-1. Compre o domínio num registrador, por exemplo Registro.br (`.com.br`), Cloudflare, Namecheap ou GoDaddy (`.com`).
-2. No painel de DNS do domínio, crie estes registros:
-
-   | Tipo  | Nome  | Valor                  |
-   |-------|-------|------------------------|
-   | A     | @     | 185.199.108.153        |
-   | A     | @     | 185.199.109.153        |
-   | A     | @     | 185.199.110.153        |
-   | A     | @     | 185.199.111.153        |
-   | AAAA  | @     | 2606:50c0:8000::153    |
-   | AAAA  | @     | 2606:50c0:8001::153    |
-   | AAAA  | @     | 2606:50c0:8002::153    |
-   | AAAA  | @     | 2606:50c0:8003::153    |
-   | CNAME | www   | USUARIO.github.io      |
-
-3. No GitHub, em **Settings → Pages → Custom domain**, digite `www.seudominio.com` e salve.
-   O GitHub cria um arquivo `CNAME` no repositório. Não apague esse arquivo.
-4. Quando o DNS propagar (de minutos a algumas horas), marque **Enforce HTTPS**. O certificado é gratuito.
-5. Recomendado: em *Settings → Pages*, verifique o domínio na sua conta para evitar que outra pessoa o use.
-
-Documentação oficial: https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site
+`londres2026.com` aponta para o GitHub Pages (registros A/AAAA para os IPs do GitHub e o arquivo `CNAME`).
+HTTPS gratuito, ativado em *Settings → Pages*.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://londres2026.com/sitemap.xml

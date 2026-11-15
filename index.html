@@ -13,6 +13,20 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://londres2026.com/">
   <meta name="theme-color" content="#f3f3f3">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Maxwell Alexandre">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "londres 2026 — pintor preto, figuração branca",
+    "alternateName": "London 2026 — Black painter, white figuration",
+    "url": "https://londres2026.com/",
+    "inLanguage": ["pt-BR", "en"],
+    "author": { "@type": "Person", "name": "Maxwell Alexandre" },
+    "description": "A figuração branca é um novo gênero da pintura inventado por Maxwell Alexandre, em 2020 com a série Clube, na favela da Rocinha, no Rio de Janeiro, Brasil."
+  }
+  </script>
   <script>
     // Escolhe o idioma ANTES de desenhar a página (sem "piscar" o outro idioma):
     // 1) ?lang=en / ?lang=pt no endereço  2) a última escolha da pessoa
@@ -21,6 +35,8 @@
       var l = null;
       try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
       if (!l) { try { l = localStorage.getItem('lang'); } catch (e) {} }
+      // buscadores (Google etc.) indexam a versão em português
+      if (!l && /bot|crawl|spider|slurp|google|bing|yandex|duckduck|facebookexternalhit|whatsapp/i.test(navigator.userAgent || '')) l = 'pt';
       if (!l) l = /^pt/i.test(navigator.language || '') ? 'pt' : 'en';
       document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
     })();
