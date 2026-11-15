@@ -3,19 +3,11 @@
    landing page estática — layout v2 (novembro/2026)
    ========================================================= */
 
-@font-face {
-  font-family: "Utopia Web";
-  src: url("../fonts/utopia-std.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --bg: #f3f3f3;
   --ink: #1d1c1a;
   --ink-soft: #4a4844;
-  --serif: "Utopia Web", "Utopia Std", "Utopia", Georgia, "Times New Roman", serif;
+  --serif: "utopia-std", "Utopia Std", "Utopia", Georgia, "Times New Roman", serif;
   --gutter: clamp(16px, 2.4vw, 36px);
   --ease: cubic-bezier(.2, .7, .2, 1);
 }

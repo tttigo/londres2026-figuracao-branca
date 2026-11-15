@@ -7,10 +7,14 @@ HTML + CSS + um pouco de JS, sem build. Publicada pelo GitHub Pages.
 index.html      página
 css/style.css   estilos (layout responsivo, cores, fonte)
 js/main.js      animação de entrada das fotos
-fonts/          Utopia Std Regular (Adobe)
 img/v2/         fotos e obras otimizadas (versões -s e -l)
 pdf/            epístola e booklet (ver pendências)
 ```
+
+## Fonte
+
+Utopia Std (regular, itálico, negrito) vem do Adobe Fonts, pelo projeto web `gcv5yce`
+(link no `<head>` do `index.html`). Se o projeto for apagado na conta Adobe, o site cai para Georgia.
 
 ## Ver localmente
 
@@ -31,7 +35,6 @@ mas o vídeo do YouTube pode não carregar fora de um servidor.
       homem em pé no kraft com as mãos na cintura (`kraft-sub`), anfiteatro vazio “MISERATIONE…” (`anfiteatro-sub`),
       pintor no cavalete em sala escura (`cavalete-sub`)
 - [ ] Revisar as traduções em inglês dos textos novos (regras 1–4, “a dinâmica…”, “o nó górdio…”)
-- [ ] Confirmar a licença de uso na web da Utopia Std (fonte comercial da Adobe; só há o peso Regular — itálico e negrito são simulados pelo navegador)
 
 ## Como a página é montada
 
