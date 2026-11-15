@@ -142,6 +142,7 @@
   var closeBtn = box.querySelector('.lightbox__close');
   var current = 0;
   var opener = null;
+  var viaKeyboard = false;   // foco só é movido para quem navega pelo teclado
 
   function show(i) {
     current = (i + links.length) % links.length;
@@ -155,27 +156,30 @@
     new Image().src = links[(current + 1) % links.length].getAttribute('href');
   }
 
-  function open(i) {
-    opener = document.activeElement;
+  function open(i, keyboard) {
+    viaKeyboard = !!keyboard;
+    opener = viaKeyboard ? document.activeElement : null;
     show(i);
     box.hidden = false;
     document.body.classList.add('no-scroll');
     requestAnimationFrame(function () { box.classList.add('is-open'); });
-    closeBtn.focus({ preventScroll: true });
+    if (viaKeyboard) closeBtn.focus({ preventScroll: true });
   }
 
   function close() {
     box.classList.remove('is-open');
     document.body.classList.remove('no-scroll');
     setTimeout(function () { box.hidden = true; img.removeAttribute('src'); }, 300);
-    if (opener) opener.focus({ preventScroll: true });
+    // devolver o foco à foto mostrava a borda de foco (Safari/Firefox) para quem usou mouse ou toque
+    if (viaKeyboard && opener) opener.focus({ preventScroll: true });
+    else if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   }
 
   all.forEach(function (link) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       links = visibleLinks();
-      open(Math.max(0, links.indexOf(link)));
+      open(Math.max(0, links.indexOf(link)), e.detail === 0);   // detail 0 = ativado pelo teclado
     });
   });
 
