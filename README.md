@@ -32,7 +32,6 @@ mas o vídeo do YouTube pode não carregar fora de um servidor.
       pintor no cavalete em sala escura (`cavalete-sub`)
 - [ ] Revisar as traduções em inglês dos textos novos (regras 1–4, “a dinâmica…”, “o nó górdio…”)
 - [ ] Confirmar a licença de uso na web da Utopia Std (fonte comercial da Adobe; só há o peso Regular — itálico e negrito são simulados pelo navegador)
-- [ ] Depois do domínio próprio, trocar `og:image` por uma URL absoluta
 
 ## Como a página é montada
 
