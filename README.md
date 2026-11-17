@@ -33,7 +33,7 @@ e abra http://localhost:8765.
 - **Celular (< 900px):** os blocos viram um fluxo em duas colunas, na ordem do HTML
   (`m-full` ocupa a largura toda, `m-half` meia largura).
 - **Idiomas:** cada texto existe nas duas línguas (`data-lang="pt"` / `data-lang="en"`); só a do `<html lang>` aparece.
-  O idioma vem de `?lang=pt|en`, da última escolha da pessoa ou do idioma do navegador.
+  O site sempre abre em português; o inglês só aparece ao clicar em ENG (que coloca `?lang=en` no endereço).
 - **Filme:** bloco `.film` no `index.html` (`data-provider="youtube"` e `data-video` com o código do vídeo).
   O player só carrega ao clicar na capa.
 - **Obras** (`.ph.art`) aparecem sempre com a moldura inteira; fotos cortam embaixo se precisar.

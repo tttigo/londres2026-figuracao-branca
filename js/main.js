@@ -1,5 +1,5 @@
 // Idioma PT / ENG: troca na hora, sem recarregar a página.
-// O idioma inicial já foi escolhido no <head> (endereço → última escolha → navegador).
+// O idioma inicial já foi escolhido no <head> (português, ou inglês com ?lang=en).
 (function () {
   var root = document.documentElement;
   var TITLE = {
@@ -29,7 +29,6 @@
       e.preventDefault();
       var lang = link.getAttribute('data-set-lang');
       apply(lang);
-      try { localStorage.setItem('lang', lang); } catch (err) {}
       // deixa o idioma no endereço, para quem compartilhar o link
       if (history.replaceState) {
         history.replaceState(null, '', location.pathname + '?lang=' + lang);

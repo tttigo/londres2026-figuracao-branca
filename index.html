@@ -40,16 +40,11 @@
   }
   </script>
   <script>
-    // Escolhe o idioma ANTES de desenhar a página (sem "piscar" o outro idioma):
-    // 1) ?lang=en / ?lang=pt no endereço  2) a última escolha da pessoa
-    // 3) o idioma do navegador (português → PT; qualquer outro → ENG)
+    // Idioma: sempre português; inglês só quando a pessoa clica em ENG
+    // (o clique coloca ?lang=en no endereço, então atualizar ou compartilhar o link mantém o inglês).
     (function () {
       var l = null;
       try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
-      if (!l) { try { l = localStorage.getItem('lang'); } catch (e) {} }
-      // buscadores (Google etc.) indexam a versão em português
-      if (!l && /bot|crawl|spider|slurp|google|bing|yandex|duckduck|facebookexternalhit|whatsapp/i.test(navigator.userAgent || '')) l = 'pt';
-      if (!l) l = /^pt/i.test(navigator.language || '') ? 'pt' : 'en';
       document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
     })();
   </script>
