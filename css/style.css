@@ -197,17 +197,11 @@ html[lang="en"] .lang a[data-set-lang="en"] { opacity: 1; border-bottom-color: c
   display: block;
   width: min(38%, 560px);
   margin: clamp(1.5rem, 2.6vw, 3rem) auto 0 0;
-  padding-bottom: 1rem;
-  background: #fff;                    /* recorte de jornal: os prints do Guardian têm fundo branco */
   box-shadow: 0 10px 28px -20px rgba(0,0,0,.35);
   transition: opacity .3s var(--ease);
 }
 .press:hover { opacity: .9; }
 .press img { display: block; width: 100%; height: auto; }
-.press__logo { margin-bottom: 1.2rem; }
-.press__title { width: 96%; margin-left: 1.5%; }
-.press__art { width: 97%; margin: 1rem 0 1.2rem 1%; }
-.press__quote { width: 97%; margin-left: 1.5%; }
 .credit {
   flex-basis: 100%;
   margin-top: 2.6rem;
